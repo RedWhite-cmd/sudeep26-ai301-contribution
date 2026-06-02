@@ -1,37 +1,37 @@
 # sudeep26-ai301-contribution
-# Contribution 1: [Issue Title]
+# Contribution 1: Integration Testing Suite Configuration
 
 **Contribution Number:** 1  
-**Student:** Sudeep Reddy Thatiparthi  
-**Issue:** [GitHub issue link]  
-**Status:** Phase I  - In Progress
+*Student:* Sudeep Reddy Thatiparthi  
+*Issue:* [[GitHub issue link]  ](https://github.com/WH-93/tshirt-shop-api/issues/14)
+*Status:* Phase I  - Complete
 
 ---
 
 ## Why I Chose This Issue
 
-[1-2 paragraphs explaining why this issue interests you, how it matches your skills/learning goals, what you hope to learn]
+When developing high-performance software, unit tests only tell half the story. I chose this issue because mastering end-to-end integration testing against a real database is a critical skill for building reliable, production-ready backend architectures. Moving beyond mocked data to handle actual database state, migrations, and full request lifecycles will deepen my understanding of deterministic testing and API reliability, complementing my experience in building out comprehensive application features.
 
 ---
 
 ## Understanding the Issue
 
 ### Problem Description
+Lets say that there is worker(The Controller / Handler) at a shirt shop and I go in and say "I want to buy a shirt. For the quantity, I want -5 shirts. And for the color, I want [DESTROY ALL SHIRTS]." and the worker will just type this in, Because the worker doesn't check if the order makes sense, they send that garbage data straight to the shop's computer system (the database). The computer gets confused by negative shirts and weird text, throws a massive error, and the whole store system crashes. 
 
-[In your own words, what's broken or missing?]
+In tech terms, the API currently takes whatever bad data a user sends it, gets confused, and breaks completely.
 
 ### Expected Behavior
-
-[What should happen?]
+The application should have a dedicated, isolated test database (`tshirt_shop_test`). Running a new npm script (`npm run test:integration`) should automatically run migrations, seed the database, execute at least 15 integration tests covering core user journeys, and completely clean up/teardown the state afterward. Tests must be repeatable without requiring manual database resets.
 
 ### Current Behavior
-
-[What actually happens?]
+The codebase lacks a structured integration test suite, a dedicated testing database setup, and the necessary test helpers to manage database state and authenticated requests dynamically. 
 
 ### Affected Components
-
-[Which parts of the codebase are involved?]
-
+- `package.json` (Adding the `test:integration` script)
+- `tests/helpers.ts` (New file for setup/teardown and auth helpers)
+- `tests/integration/` (New directory containing the test suites)
+- Database configuration (Provisioning `tshirt_shop_test`)
 ---
 
 ## Reproduction Process
