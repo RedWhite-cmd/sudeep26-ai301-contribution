@@ -1,4 +1,4 @@
-# sudeep26-ai301-contribution
+# Sudeep26-ai301-contribution
 # Contribution 1: Integration Testing Suite Configuration
 
 **Contribution Number:** 1  
